@@ -1,8 +1,11 @@
 class SessionsController < ApplicationController
 
   def new
-    # redirect_to new_session_url
-    render :new     #TODO create corresponding form
+    if logged_in?
+      redirect_to root_url
+    else
+      render :new
+    end
   end
 
   def create
